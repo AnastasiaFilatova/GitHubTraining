@@ -1,0 +1,350 @@
+# Exercises to the "Data Structures and tagging" section
+
+git init web-project
+cd web-project/
+git status
+ls .git/
+cat .git/HEAD
+ls .git/objects/
+touch about.html
+touch index.html
+touch contact.html
+git status
+git add .
+git status
+ls .git/objects/
+ls .git/objects/e6
+git cat-file -p e69de29bb
+git cat-file -p e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+git cat-file -t e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+git commit -m "initial commit of web files"
+ls .git/objects/
+ls .git/objects/a4/
+git cat-file -t a4f7f40bced5647bada2ff675093bc437bd431b4
+ls .git/objects/f2
+git cat-file -t f21813ca7d724c14f6697b6040e727e5dcffa3af
+git log -1 --format=raw
+ls
+git cat-file -p a4f7f40bced5647bada2ff675093bc437bd431b4
+git show master^{tree}
+git show master:
+mkdir css/
+touch css/stylesheet.css
+git status
+git status -u
+git add css/
+git commit -m "blank css file"
+ls .git/objects/
+git log -1 --format=raw
+git rev-parse master:
+git cat-file -p 5094952347a6f395a6f714e3182ebdfe147d240c
+git cat-file -p abe96cb00784daf55d04f06c08e960b1b6a48a16
+git status
+git log --oneline --decorate
+git tag 0.1-pre
+git log --oneline --decorate
+git show 0.1-pre
+clear
+ls .git/object
+ls .git/objects/
+ls .git/
+ls .git/refs/
+ls .git/refs/
+ls .git/refs/tags/
+cat .git/refs/tags/0.1-pre
+git rev-parse HEAD
+echo "# Web Project" > README.md
+git status
+git add README.md
+ls .git/objects
+git commit -m "adding README for proper welcoming"
+git cat-file -p 7eb1821
+git cat-file -p 7eb1821:
+git tag 0.1 -m "Adding readme file
+Also this is the official release of the web project because
+it contains a README. This is no longer a pre-release"
+git log --oneline --decorate
+git show 0.1
+ls .git/refs/tags/
+cat .git/refs/tags/0.1
+git show 52c46ac84e3e7fa15a148cadedbbf38f8af7a3f7
+ls .git/objects/pack/
+git --version
+cd ..
+
+# Exercises to the "Extracting and working on libraries with filter-branch and submodules" section
+
+git init internal-project
+cd internal-project/
+echo "# Super Secret Internal Project (SSIP)" > README.md
+git add README.md
+git commit -m "adding README as initial commit"
+touch index.html
+echo "AWS_SECRET=nejwjqneo934576" > .env
+touch .env-example
+git stauts
+git status
+git add .
+git status
+git commit -m "adding index file"
+rm .env
+git status
+git add -u .env
+git status
+git commit -m "whoops. didn't mean to add .env"
+git show HEAD~1
+git status
+git log --oneline --decorate
+git help filter-branch
+git filter-branch --index-filter 'rm --cached --ignore-unmatch .env' 1db266b
+git filter-branch --index-filter 'rm --cached --ignore-unmatch .env' HEAD
+git filter-branch --index-filter 'git rm --cached --ignore-unmatch .env' HEAD
+git status
+git log --oneline --decorate
+git log -1 -p
+git log --stat 6d083
+git status
+ls .git/objects
+git help filter-branch
+git status
+mkdir docs
+touch docs/README.md
+git add .
+git commit -m "adding docs README"
+ls
+touch test.sh
+touch run.rb
+mkdir assets
+touch assets/application.js
+git status
+git status -u
+git add test.sh
+git commit -m "quick script to run tests"
+git add assets
+git commit -m "create our first javascript file"
+git status
+cat README.md
+vim README.md
+git status
+touch docs/getting-started.md
+vim docs/README.md
+git status
+git add README.md
+git add docs/getting-started.md
+git status
+git status -b
+git status -s
+git commit -m "adding README and docs for getting started"
+git status
+git add .
+git commit -m "docs readme instructions and run file"
+git log --oneline --decorate
+ls
+git remote add origin https://github.com/githubteacher/internal-project.git
+git push -u origin master
+git push -u origin master
+git push -u origin master
+git remote -v
+git push -u origin master
+git config --global --unset-all credent.helper
+git remote -v
+git remote set-url origin https://github.com/githubteacher/internal-project
+git push -u origin master
+cd git-exercises/
+cd internal-project/
+git remote -v
+git push origin master
+ls
+git filter-branch --subdirectory-filter docs/
+git status
+git filter-branch -f --subdirectory-filter docs/
+git status
+ls
+git remote -v
+git remote set-url origin https://github.com/githubteacher/internal-project-docs
+git remote -v
+git push -u origin master
+ls
+cd ..
+mv internal-project/ internal-project-docs
+git clone https://github.com/githubteacher/internal-project
+cd internal-project
+ls
+git rm docs
+git rm -r docs
+git status
+git commit -m "removing docs to add as submodule"
+git status
+git push
+ls
+git submodule add https://github.com/githubteacher/internal-project-docs
+ls
+git submodule remove internal-project-docs/
+git status
+
+# Exercises to the "Text only submissions with format-patch"
+
+git status
+ls internal-project-docs/
+cd internal-project-docs/
+git log --oneline --decorate
+git remote -v
+cd ..
+git status
+cat .gitmodules
+git status -u
+git commit -m "add docs back as internal-project-docs"
+git cat-file -p master
+git cat-file -p master:
+cat .git/config
+cat .gitmodules
+cd internal-project-docs/
+git lg -4
+git checkout 61925
+git status
+cd ..
+git status
+git checkout .
+git status
+cd internal-project-docs/
+git checkout .
+git status
+git checkout master
+git status
+cd ..
+git status
+git push
+cd ..
+git clone https://github.com/githubteacher/internal-project githubstudent-internal-project
+ls
+cd githubstudent-internal-project/
+git config --local user.name "GitHub Student"
+git config --local user.email
+git config --local user.email "trainingdemos+githubstudent@github.com"
+git remote -v
+;s
+ls
+git checkout -b setup-scripts
+mkdir script
+mv run.rb
+mv run.rb script/
+chmod script/run.rb 755
+chmod 755 script/run.rb
+ls -la script/
+git status
+git status -u
+git add -A .
+git status
+git commit -m "move run into scripts directory"
+git log -- script/run.rb
+git log --follow  -- script/run.rb
+git status
+git log --oneline --decorate --all
+git log --oneline --decorate --all -5
+git format-patch master --stdout >../githubstudent-script-setup-feature.patch
+vim ../githubstudent-script-setup-feature.patch
+cd ../internal-project
+ls ../
+git apply --check ../githubstudent-script-setup-feature.patch
+git am --signoff < ../githubstudent-script-setup-feature.patch
+git status
+git log -1 --format=raw
+git push
+cd ../githubstudent-internal-project/
+git checkout master
+git pull
+git log --oneline --graph --decorate --all
+git log --oneline --graph --decorate --all -5
+git merge setup-scripts
+git help commit
+cd ../
+ls
+
+# Exercises to the "Structuring history to build a story with rebase"
+
+cd rebase-example/
+git config --local alias.lg "log --oneline --decorate --graph --all"
+git lg -5
+git lg -10
+git lg -10
+cd ..
+rm -rf rebase-example/
+git clone https://github.com/githubteacher/rebase-example
+cd rebase-example/
+git status
+git lg -11
+git lg -12
+git lg
+git lg
+git rebase -i 9302ba5
+git lg
+git status
+git push
+git push -f
+git status
+git lg
+git checkout experiment
+git lg
+git rebase --onto master experiment~3 experiment
+git status
+git
+git lg
+git status
+git push -f
+git lg
+cd ..
+
+# Exercises to the "Saving conflicts with rerere for better workflows" section
+
+git clone https://github.com/githubteacher/rerere-example rerere-practice
+cd rerere-practice/
+git lg
+git checkout features/171-long-lived
+git lg
+git lg --branches
+git log --oneline --decorate --graph --branches
+git branch
+git config rerere.enabled true
+git merge master
+git status
+git diff
+vim js/playground.js
+git status
+git add js
+git commit
+ls .git/
+ls .git/rr-cache/
+ls .git/rr-cache/e523945deb9153e12f5bd3d525e351825c2c2481/
+cat .git/rr-cache/e523945deb9153e12f5bd3d525e351825c2c248│···············
+.git/rr-cache/e523945deb9153e12f5bd3d525e351825c2c248│···············
+cat .git/rr-cache/e523945deb9153e12f5bd3d525e351825c2c248│···············
+ls .git/rr-cache/
+cat .git/rr-cache/e523945deb9153e12f5bd3d525e351825c2c2481/postimage
+cat .git/rr-cache/e523945deb9153e12f5bd3d525e351825c2c2481/preimage
+git status
+cat .git/ORIG_HEAD
+git reset --hard ORIG_HEAD
+git lg -10
+git reset --hard intermediate-long-lived
+git checkout master
+git reset --hard final-master
+git lg
+git lg -10
+git merge master
+git checkout -
+git merge master
+git status
+git diff js/
+git add js
+git diff
+vim css/playground.css
+git status
+git add css
+git commit
+git reset --hard ORIG_HEAD
+git reset --hard final-long-lived
+git config --local rerere.autoupdate true
+git checkout master
+git merge features/171-long-lived
+git status
+git commit
